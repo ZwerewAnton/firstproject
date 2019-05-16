@@ -10,6 +10,7 @@ namespace WebApplication7.Controllers
 {
     public class HomeController : Controller
     {
+        //Index
         public IActionResult Index()
         {
             return View();
