@@ -10,21 +10,39 @@ namespace WebApplication7.Controllers
 {
     public class HomeController : Controller
     {
-        //Index
-        public IActionResult Index()
+        public ViewResult Index() {
+            int hour = DateTime.Now.Hour;
+            ViewBag.Greeting = hour < 12 ? "Доброе утро!" : "Добрый вечер!";
+            return View("MyView");
+        }
+        [HttpGet]
+        public ViewResult RsvpForm()
         {
             return View();
         }
 
-        public IActionResult Privacy()
+        [HttpPost]
+        public ViewResult RspvForm(GuestResponse guestResponse)
         {
+            //Что сделать: сохранить ответ от гостя
             return View();
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+        ////Index
+        //public IActionResult Index()
+        //{
+        //    return View();
+        //}
+
+        //public IActionResult Privacy()
+        //{
+        //    return View();
+        //}
+
+        //[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        //public IActionResult Error()
+        //{
+        //    return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        //}
     }
 }
